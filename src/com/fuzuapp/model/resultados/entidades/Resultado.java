@@ -12,13 +12,13 @@ package com.fuzuapp.model.resultados.entidades;
  */
 public class Resultado {
     
-    public static final int TEXTO = 1;
-    public static final int IMAGEM = 2;
-    public static final int VIDEO = 3;
+    public static final String TEXTO = "texto";
+    public static final String IMAGEM = "imagem";
+    public static final String VIDEO = "video";
     
     private String url;
     private String descricao;
-    private int tipo;
+    private String tipo;
     private GeoPoint local;
     private String horario;
     private String endereco;
@@ -60,14 +60,14 @@ public class Resultado {
     /**
      * @return the tipo
      */
-    public int getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
     /**
      * @param tipo the tipo to set
      */
-    public void setTipo(int tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
@@ -87,7 +87,7 @@ public class Resultado {
 
     @Override
     public String toString() {
-        return getDescricao();
+        return getNomeUsuario() + ", " + getDescricao();
     }
 
     /**
@@ -129,5 +129,7 @@ public class Resultado {
     public String getNomeUsuario() {
         return nomeUsuario;
     }
+
+
     
 }

@@ -49,7 +49,7 @@
             <ul >
 
                 <li ng-repeat="i in items| searchFor:searchString">
-                    <img class = "perfil" src ="{{i.fotoUrl}}" title="{{i.nomeUsuario}}"/>
+                    <a href="{{i.url}}"> <img class = "{{i.tipo}}" src ="{{i.fotoUrl}}" title="{{i.nomeUsuario}}"/></a>
                     <span class = "horario" > "{{i.horario}}" </span>
                     "{{i.descricao}}"
                 </li>
@@ -89,8 +89,10 @@
             <c:forEach items="${resultados}" var="resultado">
                     {
                         fotoUrl: "${resultado.fotoUrl}",
-                        nomeUsuario: "${resultado.nomeUsuario}",
+                        nomeUsuario: "<c:out value='${resultado.nomeUsuario}' />",
                         horario: "${resultado.horario}",
+                        tipo: "${resultado.tipo}",
+                        url: "<c:out value='${resultado.url}'/>",
                         descricao: "<c:out value='${fn:replace(resultado.descricao, newLineChar, ";")}' />"
                     },
             </c:forEach>
@@ -162,6 +164,18 @@
     .horario{
         color: #E74C3C;
         font-size: 8px;
+    }
+
+    /* Seleciona tamanho da imagem de acordo com o tipo de resultado */
+
+    .texto{
+        width: 40px;
+        height: 40px;
+    }
+
+    .video{
+        width: 100px;
+        height: 100px;
     }
 
 </style>

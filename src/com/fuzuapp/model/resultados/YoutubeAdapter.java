@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -57,7 +59,8 @@ public class YoutubeAdapter implements IRedeSociaisAdapter{
             // {{ https://cloud.google.com/console }}
             String apiKey = "AIzaSyBUJTCSWev-WSsmjvpUHT2u1T12rQWPFTc";
             search.setKey(apiKey);
-            search.setQ(queryTerm);
+            search.setLocation(ponto.getLatitude()+","+ponto.getLongitude());
+            search.setLocationRadius(String.valueOf(raio)+"km");
 
             // Restrict the search results to only include videos. See:
             // https://developers.google.com/youtube/v3/docs/search/list#type
@@ -65,17 +68,36 @@ public class YoutubeAdapter implements IRedeSociaisAdapter{
 
             // To increase efficiency, only retrieve the fields that the
             // application uses.
-            search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
+            search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url,snippet/description,snippet/publishedAt)");
             search.setMaxResults(NUMBER_OF_VIDEOS_RETURNED);
+            search.setOrder("date");
 
             // Call the API and print results.
             SearchListResponse searchResponse = search.execute();
+
+            List<Resultado> resultados = new ArrayList<Resultado>();
+
             List<SearchResult> searchResultList = searchResponse.getItems();
-            if (searchResultList != null) {
-                prettyPrint(searchResultList.iterator(), queryTerm);
+
+            for(SearchResult sr: searchResultList){
+                ResourceId rId = sr.getId();
+
+                if (rId.getKind().equals("youtube#video")) {
+                    Resultado resultado = new Resultado();
+                    resultado.setTipo(Resultado.VIDEO);
+                    resultado.setFotoUrl(sr.getSnippet().getThumbnails().getDefault().getUrl());
+                    resultado.setHorario(sr.getSnippet().getPublishedAt().toString());
+                    resultado.setNomeUsuario(sr.getSnippet().getTitle());
+                    resultado.setDescricao(sr.getSnippet().getTitle()+" - "+sr.getSnippet().getDescription());
+                    resultado.setUrl("http://www.youtube.com/watch?v="+rId.getVideoId());
+                    resultados.add(resultado);
+                    System.out.println(resultado);
+
+                }
             }
             
-            return new ArrayList<Resultado>();
+            return resultados;
+
         } catch (IOException ex) {
             Logger.getLogger(YoutubeAdapter.class.getName()).log(Level.SEVERE, null, ex);
         }

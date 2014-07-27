@@ -8,6 +8,8 @@ package com.fuzuapp.model.resultados;
 
 import com.fuzuapp.model.resultados.entidades.GeoPoint;
 import com.fuzuapp.model.resultados.entidades.Resultado;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,8 +30,12 @@ public class ComunicacaoRedeSocial {
         youtube = new YoutubeAdapter();
     }
     public List<Resultado> buscarResultados(GeoPoint localizacao, double raio) {
-        youtube.getResultados(localizacao, raio);
-        return twitter.getResultados(localizacao, raio);
+
+
+        List<Resultado> resultados = new ArrayList<Resultado>();
+        resultados.addAll(twitter.getResultados(localizacao,raio));
+        resultados.addAll(youtube.getResultados(localizacao, raio));
+        return resultados;
     }
     
 }
