@@ -36,10 +36,14 @@ public class RepositorioList implements IRepositorioUsuario{
 
     @Override
     public Usuario get(Login login) {
-        for(Usuario u: usuarios){
-            if(u.getLogin().toString().equals(login.toString())){
-                return u;
+        try {
+            for (Usuario u : usuarios) {
+                if (u.getLogin().toString().equals(login.toString())) {
+                    return u;
+                }
             }
+        }catch (NullPointerException e){
+            e.printStackTrace();
         }
         
         return null;

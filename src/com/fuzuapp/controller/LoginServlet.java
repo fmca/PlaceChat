@@ -69,22 +69,26 @@ public class LoginServlet extends HttpServlet {
         boolean logado = false;
         boolean credenciais = false;
         try{
-        Login login = new Login(request.getParameter("login"));
-        Senha senha = new Senha(request.getParameter("senha"));       
-        credenciais = true;
-        Fachada fachada = Fachada.getInstance();       
-        fachada.logar(login, senha);
-        
-        logado = true;
-        
+            Login login = new Login(request.getParameter("login"));
+            Senha senha = new Senha(request.getParameter("senha"));
+            credenciais = true;
+            Fachada fachada = Fachada.getInstance();
+            fachada.logar(login, senha);
+
+            logado = true;
+            request.getSession().setAttribute("login", login);
+            request.getSession().setAttribute("senha", senha);
+
         
         }catch(Exception e){
                 request.setAttribute("erro", e.getMessage());
         }
         
         if(logado){
-            response.sendRedirect("resultados");
-        }else{ 
+            String url = (String) request.getSession().getAttribute("caller");
+            url = url == null ? "resultados" : url;
+            response.sendRedirect(url);
+        }else{
             RequestDispatcher dispatcher = request.getRequestDispatcher("TelaLogin.jsp");
             dispatcher.forward(request, response);
         }
