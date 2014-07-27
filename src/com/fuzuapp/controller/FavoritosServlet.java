@@ -6,8 +6,17 @@
 
 package com.fuzuapp.controller;
 
+import com.fuzuapp.model.Fachada;
+import com.fuzuapp.model.resultados.entidades.Resultado;
+import com.fuzuapp.model.usuario.entidades.Login;
+import com.fuzuapp.model.usuario.entidades.Senha;
+import com.fuzuapp.model.usuario.entidades.Usuario;
+import com.fuzuapp.model.usuario.exceptions.AutenticacaoInvalida;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +39,25 @@ public class FavoritosServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        try {
+            autenticar(request);
+
+            Fachada fachada = Fachada.getInstance();
+            Usuario usuario = new Usuario();
+            usuario.setLogin((Login) request.getSession().getAttribute("login"));
+            usuario.setSenha((Senha) request.getSession().getAttribute("senha"));
+            List<Resultado> favoritos = fachada.verFavoritos(usuario);
+
+            request.setAttribute("favoritos", favoritos);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("TelaFavoritos.jsp");
+            dispatcher.forward(request, response);
+
+        } catch (AutenticacaoInvalida autenticacaoInvalida) {
+            request.getSession().setAttribute("caller", request.getRequestURL().toString());
+            RequestDispatcher dispatcher = request.getRequestDispatcher("favoritos");
+            dispatcher.forward(request, response);
+        }
+
 
     }
 
@@ -73,4 +100,11 @@ public class FavoritosServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private void autenticar(HttpServletRequest request) throws AutenticacaoInvalida {
+
+        Login login = (Login) request.getSession().getAttribute("login");
+        Senha senha = (Senha) request.getSession().getAttribute("senha");
+
+        Fachada.getInstance().logar(login,senha);
+    }
 }

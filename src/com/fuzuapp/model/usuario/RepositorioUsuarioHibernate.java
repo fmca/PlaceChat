@@ -7,7 +7,7 @@ package com.fuzuapp.model.usuario;
 
 import com.fuzuapp.model.usuario.entidades.Login;
 import com.fuzuapp.model.usuario.entidades.Usuario;
-import frameworks.HibernateUtil;
+import com.fuzuapp.frameworks.HibernateUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

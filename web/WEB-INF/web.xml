@@ -34,7 +34,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FavoritosServlet</servlet-name>
-        <url-pattern>/FavoritosServlet</url-pattern>
+        <url-pattern>/favoritos</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FiltrarPosicaoServlet</servlet-name>

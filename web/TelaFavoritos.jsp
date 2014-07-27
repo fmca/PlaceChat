@@ -1,4 +1,5 @@
-<%-- 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
     Document   : TelaFavoritos
     Created on : 24/05/2014, 12:45:31
     Author     : Filipe_2
@@ -12,6 +13,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+    <ul>
+    <c:forEach items="${favoritos}" var="favorito">
+        <li>oi</li>
+    </c:forEach>
+    </ul>
     </body>
 </html>
