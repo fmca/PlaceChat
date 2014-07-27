@@ -87,7 +87,21 @@ public class FavoritosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+
+        Resultado r = new Resultado();
+        r.setUrl(request.getParameter("url"));
+        r.setDescricao(request.getParameter("descricao"));
+        r.setNomeUsuario(request.getParameter("nome"));
+        r.setFotoUrl(request.getParameter("fotourl"));
+        r.setHorario(request.getParameter("horario"));
+        r.setTipo(request.getParameter("tipo"));
+
+        Usuario usuario = new Usuario();
+        usuario.setLogin((Login) request.getSession().getAttribute("login"));
+        usuario.setSenha((Senha) request.getSession().getAttribute("senha"));
+        Fachada.getInstance().salvarFavorito(r,usuario);
+
     }
 
     /**

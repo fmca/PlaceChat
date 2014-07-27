@@ -3,6 +3,7 @@ package com.fuzuapp.model.favoritos;
 import com.fuzuapp.model.resultados.entidades.Resultado;
 import com.fuzuapp.model.usuario.entidades.Usuario;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,11 +13,12 @@ import java.util.Map;
  */
 public class RepositorioFavoritosList implements IRepositorioFavoritos{
 
-    private Map<String,List<Resultado>> favoritos = new HashMap<>();
+    private Map<String,List<Resultado>> favoritos = new HashMap<String, List<Resultado>>();
 
     @Override
     public void inserir(Resultado favorito, Usuario usuario) {
         List<Resultado> favs = favoritos.get(usuario.getLogin().toString());
+        favs = favs==null? new ArrayList<Resultado>() : favs;
         favs.add(favorito);
         favoritos.put(usuario.getLogin().toString(), favs);
     }

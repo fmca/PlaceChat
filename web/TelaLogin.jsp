@@ -25,7 +25,8 @@
              <label for="senha">Senha</label>
              <input name="senha" class="text" type="password"/> </br>
             <span class="erro"> ${erro} </span></br>
-            <input type="submit" value="Entrar" class="button"/> 
+            <input type="submit" value="Entrar" class="button"/>
+            <p><a href="/cadastro">Cadastrar-se</a></p>
           </form> 
     		</div>
     	</div>

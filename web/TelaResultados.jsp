@@ -39,6 +39,7 @@
 
             <input type="text" style="float: left;" id="searchbox" placeholder="Pesquisar" width="100%"/>
             <div id="map" style="width: 100%; height: 50em;"></div>
+
         </div>
 
 
@@ -46,12 +47,13 @@
         <div style="float: left; width: 60%" ng-app="instantSearch" ng-controller="InstantSearchController">
 
             <input type="text" ng-model="searchString" placeholder="Filtre por texto ou hashtag" style="width: 100%; margin-left: 2em;"/>
-            <ul >
+            <ul id="#list">
 
                 <li ng-repeat="i in items| searchFor:searchString">
                     <a href="{{i.url}}"> <img class = "{{i.tipo}}" src ="{{i.fotoUrl}}" title="{{i.nomeUsuario}}"/></a>
-                    <span class = "horario" > "{{i.horario}}" </span>
-                    "{{i.descricao}}"
+                    <span class = "horario" >{{i.horario}}</span>
+                    <span class = "descricao" >{{i.descricao}}</span>
+                    <button class="fav">Favoritar</button>
                 </li>
                 <!-- < li >  </li >-->
             </ul>
@@ -106,6 +108,24 @@
 
 
     <script>
+        $(function (){
+            $(".fav").on("click",function(){
+                var urlS = $($(this).parent().find("a")[0]).attr("href");
+                var nomeS = $($(this).parent().find("img")[0]).attr("title");
+                var fotourlS = $($(this).parent().find("img")[0]).attr("src");
+                var tipoS = $($(this).parent().find("img")[0]).attr("class");
+                var horarioS = $($(this).parent().find(".horario")[0]).text().trim();
+                var descricaoS = $($(this).parent().find(".descricao")[0]).text();
+
+                $.post( "/favoritos", { nome: nomeS, url: urlS, fotourl: fotourlS, tipo: tipoS, descricao: descricaoS, horario: horarioS})
+                        .done(function( data ) {
+                            alert( "Data Loaded: " + data );
+                        });
+
+            });
+        });
+
+
         $("#searchbox").geocomplete();
         // create a map in the "map" div, set the view to a given place and zoom
         var map = L.map('map').setView([<c:out value="${latitude}"/>,<c:out value="${longitude}"/>], 13);
