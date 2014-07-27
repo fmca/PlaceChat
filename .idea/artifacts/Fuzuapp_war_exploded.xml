@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Fuzuapp:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Fuzuapp_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Fuzuapp/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Fuzuapp" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

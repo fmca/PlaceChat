@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.fuzuapp.model.usuario.entidades.Usuario" table="usuario" lazy="true">
+        <id name="id" column="id">
+            <generator class="native" />
+        </id>
+
+        <component name="email" >
+            <property name="str" column="email"></property>
+        </component>
+        <component name="nome" >
+            <property name="str" column="nome"></property>
+        </component>
+        <component name="senha" >
+            <property name="str" column="senha"></property>
+        </component>
+        <component name="login" >
+            <property name="str" column="login"></property>
+        </component>
+
+    </class>
+</hibernate-mapping>

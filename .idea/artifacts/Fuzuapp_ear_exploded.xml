@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="Fuzuapp:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Fuzuapp_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Fuzuapp/javaeeApplication/javaEEApplication" />
+      <element id="directory" name="web.war">
+        <element id="artifact" artifact-name="Fuzuapp:war exploded" />
+      </element>
+      <element id="library" level="project" name="google-api-client-1.19.0" />
+      <element id="library" level="project" name="Hibernate 4.2.2-4.2.2" />
+      <element id="library" level="project" name="jackson-core-2.1.3" />
+      <element id="library" level="project" name="Java EE 6-Java EE 6" />
+      <element id="library" level="project" name="Mojarra-2.2.1" />
+      <element id="library" level="project" name="twitter4j" />
+    </root>
+  </artifact>
+</component>

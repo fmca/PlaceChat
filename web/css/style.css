@@ -1,0 +1,97 @@
+html{
+
+font-family: 'Lato', sans-serif;
+font-weight: 400;
+
+}
+
+body {
+
+/*background: #fefefe;*/
+background-image: url(../images/background.png);
+
+}
+
+#content {
+
+width: 80%;
+margin-left: auto;
+margin-right: auto;
+
+}
+
+.center_vertical{
+
+position: relative;
+width: 100%;
+margin-bottom: 20%;
+
+}
+
+#marca {
+
+width: 200px;
+height: 209px;
+margin-right: auto;
+margin-left: auto;
+
+
+}
+
+#marcalogin {
+
+width: 150px;
+height: 157px;
+margin-right: auto;
+margin-left: auto;
+margin-bottom: 30px;
+margin-top: 15%;
+
+}
+
+#login {
+
+width: 300px;
+height: 209px;
+margin-right: auto;
+margin-left: auto;
+
+
+}
+
+.contrast:hover{
+
+ -webkit-filter: brightness(120%);
+
+}
+
+label {
+  float:left;
+  width:25%;
+  text-align:right;
+  margin-right: 10px; /* optional */
+  color: #E74C3C;
+}
+
+input[type="text"]{
+  float:left;
+  padding: 5px 5px 5px 5px;
+  width:65%;
+  border-width: 1px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+
+}
+
+input[type="submit"]{
+
+	float: right;
+	text-align: center;
+	padding: 5px 5px 5px 5px;
+	width: 140px;
+	border-width: 0px;
+	background-color: #E74C3C;
+	color: white;
+	border-radius: 5px;
+
+}
