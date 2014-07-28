@@ -57,6 +57,12 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="facebook4j-core-2.1.0" level="project" />
+    <orderEntry type="library" name="foursquare-api-1.0.2" level="project" />
+    <orderEntry type="library" name="foursquare-api-1.0.2-javadoc" level="project" />
+    <orderEntry type="library" name="flickr4java-2.10" level="project" />
+    <orderEntry type="library" name="scribe-1.3.5" level="project" />
+    <orderEntry type="library" name="log4j-1.2.17" level="project" />
   </component>
 </module>
 

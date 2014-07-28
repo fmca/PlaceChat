@@ -10,6 +10,7 @@ import com.fuzuapp.model.usuario.entidades.Login;
 import com.fuzuapp.model.usuario.entidades.Senha;
 import com.fuzuapp.model.usuario.entidades.Usuario;
 import com.fuzuapp.model.usuario.exceptions.AutenticacaoInvalida;
+import com.fuzuapp.model.usuario.exceptions.UsuarioJaExisteException;
 
 /**
  *
@@ -22,7 +23,7 @@ public class ControladorUsuario {
     public ControladorUsuario(IRepositorioUsuario repUsuario){
         this.cadastroUsuario = new CadastroUsuario(repUsuario);
     }
-    public void cadastrar (Usuario usuario){
+    public void cadastrar (Usuario usuario) throws UsuarioJaExisteException {
         this.cadastroUsuario.inserirUsuario(usuario);
     }
     

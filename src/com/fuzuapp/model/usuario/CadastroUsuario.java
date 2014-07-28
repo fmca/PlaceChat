@@ -10,6 +10,7 @@ import com.fuzuapp.model.usuario.entidades.Login;
 import com.fuzuapp.model.usuario.entidades.Senha;
 import com.fuzuapp.model.usuario.entidades.Usuario;
 import com.fuzuapp.model.usuario.exceptions.AutenticacaoInvalida;
+import com.fuzuapp.model.usuario.exceptions.UsuarioJaExisteException;
 
 /**
  *
@@ -33,14 +34,21 @@ public class CadastroUsuario {
         if (u == null){
              throw new AutenticacaoInvalida("Usuário não existe");
         }
-        if (! u.validar(senha.toString())){
+
+        if(senha == null || ! u.validar(senha.toString())){
             throw new AutenticacaoInvalida("Senha inválida");
         }
         
     }
     
-    public void inserirUsuario(Usuario usuario){
-        this.repositorioUsuario.inserir(usuario);
+    public void inserirUsuario(Usuario usuario) throws UsuarioJaExisteException {
+        Usuario u = getUsuario(usuario.getLogin());
+        if(u == null){
+            this.repositorioUsuario.inserir(usuario);
+        }else{
+            throw new UsuarioJaExisteException();
+        }
+
     }
     
     public void remover(Usuario usuario){

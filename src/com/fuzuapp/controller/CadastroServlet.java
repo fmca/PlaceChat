@@ -11,10 +11,8 @@ import com.fuzuapp.model.usuario.entidades.Nome;
 import com.fuzuapp.model.usuario.entidades.Senha;
 import com.fuzuapp.model.usuario.entidades.Usuario;
 import com.fuzuapp.model.usuario.entidades.Email;
-import com.fuzuapp.model.usuario.exceptions.EmailInvalidoException;
-import com.fuzuapp.model.usuario.exceptions.LoginInvalidoException;
-import com.fuzuapp.model.usuario.exceptions.NomeInvalidoException;
-import com.fuzuapp.model.usuario.exceptions.SenhaInvalidaException;
+import com.fuzuapp.model.usuario.exceptions.*;
+
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -94,9 +92,11 @@ public class CadastroServlet extends HttpServlet {
             emailErro = e3.getMessage();
         }catch(SenhaInvalidaException e4){
             senhaErro = e4.getMessage();
+        } catch (UsuarioJaExisteException e) {
+           loginErro = e.getMessage();
         }
 
-        
+
         if(cadastrado){
             response.sendRedirect("TelaLogin.jsp");
         }else{

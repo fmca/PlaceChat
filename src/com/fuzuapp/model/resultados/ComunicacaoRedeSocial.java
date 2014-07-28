@@ -20,6 +20,7 @@ public class ComunicacaoRedeSocial {
 
     IRedeSociaisAdapter twitter;
     IRedeSociaisAdapter youtube;
+    IRedeSociaisAdapter flickr;
     
     public ComunicacaoRedeSocial(){
         inicializarRedes();
@@ -28,6 +29,7 @@ public class ComunicacaoRedeSocial {
     private void inicializarRedes(){
         twitter = new TwitterAdapter();
         youtube = new YoutubeAdapter();
+        flickr = new FlickrAdapter();
     }
     public List<Resultado> buscarResultados(GeoPoint localizacao, double raio) {
 
@@ -35,6 +37,7 @@ public class ComunicacaoRedeSocial {
         List<Resultado> resultados = new ArrayList<Resultado>();
         resultados.addAll(twitter.getResultados(localizacao,raio));
         resultados.addAll(youtube.getResultados(localizacao, raio));
+        resultados.addAll(flickr.getResultados(localizacao, raio));
         return resultados;
     }
     

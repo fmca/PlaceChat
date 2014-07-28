@@ -16,6 +16,7 @@ import com.fuzuapp.model.usuario.entidades.Senha;
 import com.fuzuapp.model.usuario.entidades.Usuario;
 import com.fuzuapp.model.usuario.exceptions.AutenticacaoInvalida;
 import com.fuzuapp.model.usuario.FactoryUsuario;
+import com.fuzuapp.model.usuario.exceptions.UsuarioJaExisteException;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class Fachada {
     public void logar(Login login, Senha senha) throws AutenticacaoInvalida{
         controladorUsuario.autenticar(login, senha);
     }
-    public void cadastrar(Usuario usuario){
+    public void cadastrar(Usuario usuario) throws UsuarioJaExisteException {
         controladorUsuario.cadastrar(usuario);
     }
     

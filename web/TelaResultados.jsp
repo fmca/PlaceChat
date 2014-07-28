@@ -119,7 +119,7 @@
 
                 $.post( "/favoritos", { nome: nomeS, url: urlS, fotourl: fotourlS, tipo: tipoS, descricao: descricaoS, horario: horarioS})
                         .done(function( data ) {
-                            alert( "Data Loaded: " + data );
+                            alert("Favoritado!");
                         });
 
             });
