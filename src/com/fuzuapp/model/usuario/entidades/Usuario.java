@@ -6,11 +6,13 @@
 
 package com.fuzuapp.model.usuario.entidades;
 
+import javax.persistence.Entity;
+
 /**
  *
  * @author Filipe_2
  */
-
+@Entity
 public class Usuario {
     
 

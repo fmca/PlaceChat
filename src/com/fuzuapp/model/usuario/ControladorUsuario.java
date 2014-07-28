@@ -30,4 +30,8 @@ public class ControladorUsuario {
         
         cadastroUsuario.autenticar(login, senha);
     }
+
+    public Usuario buscarUsuario(Login login){
+        return cadastroUsuario.getUsuario(login);
+    }
 }

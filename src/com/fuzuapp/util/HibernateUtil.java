@@ -1,4 +1,4 @@
-package com.fuzuapp.frameworks;
+package com.fuzuapp.util;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

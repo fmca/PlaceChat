@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.fuzuapp.model.usuario.entidades.Usuario" table="usuario" lazy="true">
+    <class name="com.fuzuapp.model.usuario.entidades.Usuario" table="Usuario" lazy="true">
         <id name="id" column="id">
             <generator class="native" />
         </id>
@@ -18,6 +18,38 @@
         </component>
         <component name="login" >
             <property name="str" column="login"></property>
+        </component>
+
+    </class>
+
+    <class name="com.fuzuapp.model.favoritos.entidades.Favorito" table="Favorito" lazy="true">
+        <id name="id" column="id">
+            <generator class="native" />
+        </id>
+
+        <component name="resultado">
+            <property name="descricao" column="descricao" type="java.lang.String"></property>
+
+            <property name="fotoUrl" column="foto_url" type="java.lang.String"></property>
+
+            <property name="nomeUsuario" column="nome_usuario" type="java.lang.String"></property>
+
+            <property name="tipo" column="tipo" type="java.lang.String"></property>
+
+            <property name="url" column="url" type="java.lang.String"></property>
+
+            <property name="horario" column="horario" type="java.lang.String"></property>
+
+            <component name="local">
+                <property name="latitude" column="latitude" type="java.lang.Double"></property>
+                <property name="longitude" column="longitude" type="java.lang.Double"></property>
+            </component>
+        </component>
+
+        <component name="usuario">
+            <component name="login">
+                <property name="str" column="login"></property>
+            </component>
         </component>
 
     </class>

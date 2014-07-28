@@ -6,21 +6,17 @@
 
 package com.fuzuapp.model;
 
-import com.fuzuapp.model.favoritos.CadastroFavoritos;
-import com.fuzuapp.model.favoritos.ControladorFavoritos;
-import com.fuzuapp.model.favoritos.RepositorioFavoritosList;
+import com.fuzuapp.model.favoritos.*;
 import com.fuzuapp.model.resultados.ControladorResultados;
 import com.fuzuapp.model.resultados.entidades.GeoPoint;
 import com.fuzuapp.model.resultados.entidades.Resultado;
 import com.fuzuapp.model.usuario.ControladorUsuario;
-import com.fuzuapp.model.usuario.RepositorioList;
-import com.fuzuapp.model.usuario.RepositorioUsuarioHibernate;
 import com.fuzuapp.model.usuario.entidades.Login;
 import com.fuzuapp.model.usuario.entidades.Senha;
 import com.fuzuapp.model.usuario.entidades.Usuario;
 import com.fuzuapp.model.usuario.exceptions.AutenticacaoInvalida;
+import com.fuzuapp.model.usuario.FactoryUsuario;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,8 +36,8 @@ public class Fachada {
     
     private Fachada(){
         this.controladorResultados = new ControladorResultados();
-        this.controladorUsuario = new ControladorUsuario(new RepositorioList());
-        this.controladorFavoritos = new ControladorFavoritos(new CadastroFavoritos(new RepositorioFavoritosList()));
+        this.controladorUsuario = new ControladorUsuario(FactoryUsuario.criarRepositorio());
+        this.controladorFavoritos = new ControladorFavoritos(new CadastroFavoritos(FactoryFavoritos.criarRepositorio()));
     }
     
     public void logar(Login login, Senha senha) throws AutenticacaoInvalida{
@@ -54,6 +50,8 @@ public class Fachada {
     public List<Resultado> buscarResultados(GeoPoint geopoint, double raio){
         return controladorResultados.buscarResultados(geopoint, raio);
     }
+
+    public Usuario getUsuario(Login login){return this.controladorUsuario.buscarUsuario(login);}
 
     public void salvarFavorito(Resultado fav, Usuario usuario){
         this.controladorFavoritos.salvar(fav,usuario);

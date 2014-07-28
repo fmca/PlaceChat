@@ -7,7 +7,7 @@ package com.fuzuapp.model.usuario;
 
 import com.fuzuapp.model.usuario.entidades.Login;
 import com.fuzuapp.model.usuario.entidades.Usuario;
-import com.fuzuapp.frameworks.HibernateUtil;
+import com.fuzuapp.util.HibernateUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,15 +19,17 @@ import org.hibernate.criterion.Example;
  */
 public class RepositorioUsuarioHibernate implements IRepositorioUsuario {
 
+    SessionFactory sessFact = HibernateUtil.getSessionFactory();
+    Session session;
+
     @Override
-    public void inserir(Usuario usuario) {
-        SessionFactory sessFact = HibernateUtil.getSessionFactory();
-        Session session = sessFact.getCurrentSession();
+    public void inserir(Usuario usuario){
+        session = sessFact.openSession();
         org.hibernate.Transaction tr = session.beginTransaction();
         session.save(usuario);
         tr.commit();
 
-        sessFact.close();
+        session.close();
 
     }
 
@@ -38,16 +40,21 @@ public class RepositorioUsuarioHibernate implements IRepositorioUsuario {
 
     @Override
     public Usuario get(Login login) {
-        SessionFactory sessFact = HibernateUtil.getSessionFactory();
-        Session session = sessFact.getCurrentSession();
 
+        session = sessFact.openSession();
+        org.hibernate.Transaction tr = session.beginTransaction();
         Usuario usuario = new Usuario();
         usuario.setLogin(login);
         Example example = Example.create(usuario);
         
         Criteria criteria = session.createCriteria(Usuario.class).add(example);
         
-        return  criteria.list().size()>0?(Usuario) criteria.list().get(0):null;
+        Usuario resp =  criteria.list().size()>0?(Usuario) criteria.list().get(0):null;
+
+        tr.commit();
+        session.close();
+
+        return resp;
     }
 
 }

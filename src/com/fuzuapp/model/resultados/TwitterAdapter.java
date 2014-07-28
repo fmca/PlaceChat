@@ -51,7 +51,6 @@ public class TwitterAdapter implements IRedeSociaisAdapter{
                 r.setDescricao(status.getText());
                 r.setUrl("http://twitter.com/statuses/"+String.valueOf(status.getId()));
                 r.setNomeUsuario(status.getUser().getName());
-                try{r.setEndereco(status.getPlace().getFullName());}catch(Exception e){}
                 r.setHorario(new SimpleDateFormat("dd/MM HH:mm").format(status.getCreatedAt()));
                 r.setFotoUrl(status.getUser().getProfileImageURL());
                 //r.setLocal(new GeoPoint(status.getGeoLocation().getLatitude(), status.getGeoLocation().getLongitude()));

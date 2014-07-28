@@ -6,22 +6,25 @@
 
 package com.fuzuapp.model.resultados.entidades;
 
+import javax.persistence.Entity;
+
 /**
  *
  * @author Filipe_2
  */
+@Entity
 public class Resultado {
     
     public static final String TEXTO = "texto";
     public static final String IMAGEM = "imagem";
     public static final String VIDEO = "video";
-    
+
+    private  int id;
     private String url;
     private String descricao;
     private String tipo;
     private GeoPoint local;
     private String horario;
-    private String endereco;
     private String fotoUrl;
     private String nomeUsuario;
     
@@ -104,13 +107,6 @@ public class Resultado {
         this.horario = horario;
     }
 
-    public void setEndereco(String fullName) {
-        this.endereco = fullName;
-    }
-    
-    public String getEndereco(){
-        return this.endereco;
-    }
 
     public String getFotoUrl(){
         return this.fotoUrl;
@@ -131,5 +127,11 @@ public class Resultado {
     }
 
 
-    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

@@ -19,6 +19,9 @@ public class GeoPoint {
         this.longitude = longitude;
     }
 
+    public GeoPoint() {
+    }
+
     /**
      * @return the latitude
      */

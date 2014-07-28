@@ -49,6 +49,8 @@ public class FavoritosServlet extends HttpServlet {
             List<Resultado> favoritos = fachada.verFavoritos(usuario);
 
             request.setAttribute("favoritos", favoritos);
+            request.setAttribute("nome", Fachada.getInstance().getUsuario((Login) request.getSession().getAttribute("login")).getNome().toString());
+
             RequestDispatcher dispatcher = request.getRequestDispatcher("TelaFavoritos.jsp");
             dispatcher.forward(request, response);
 

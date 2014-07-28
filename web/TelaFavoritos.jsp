@@ -16,11 +16,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-        <title>JSP Page</title>
+        <title>Favoritos</title>
     </head>
     <body>
     <div style="float: left; width: 60%" ng-app="instantSearch" ng-controller="InstantSearchController">
 
+        <h1>Favoritos de "${nome}"</h1>
         <input type="text" ng-model="searchString" placeholder="Filtre por texto ou hashtag" style="width: 100%; margin-left: 2em;"/>
         <ul >
 
