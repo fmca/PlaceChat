@@ -76,7 +76,7 @@
                     searchString = searchString.toLowerCase();
                     angular.forEach(arr, function(item) {
 
-                        if (item.descricao.toLowerCase().indexOf(searchString) !== -1) {
+                        if (item.descricao.toLowerCase().indexOf(searchString) !== -1 || ("/"+item.tipo.toLowerCase()) == (searchString) ) {
                             result.push(item);
                         }
 
