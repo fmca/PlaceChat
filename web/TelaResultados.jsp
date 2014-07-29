@@ -53,7 +53,7 @@
                     <a href="{{i.url}}"> <img class = "{{i.tipo}}" src ="{{i.fotoUrl}}" title="{{i.nomeUsuario}}"/></a>
                     <span class = "horario" >{{i.horario}}</span>
                     <span class = "descricao" >{{i.descricao}}</span>
-                    <button class="fav">Favoritar</button>
+                    <button type="submit" class="fav">Favoritar</button>
                 </li>
                 <!-- < li >  </li >-->
             </ul>
