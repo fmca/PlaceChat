@@ -20,6 +20,12 @@ margin-right: auto;
 
 }
 
+h1{
+    color: #E74C3C;
+    padding-left: 40px;
+
+}
+
 .center_vertical{
 
 position: relative;
@@ -147,5 +153,15 @@ button{
     border-radius: 5px;
     margin-right: 10px;
 
+}
+
+.horario {
+    color: #E74C3C;
+    font-size: 8px;
+}
+
+ul {
+    list-style: none
+;
 }
 

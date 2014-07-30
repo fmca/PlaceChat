@@ -24,12 +24,15 @@
 
         <h1>Favoritos de "${nome}"</h1>
         <input type="text" ng-model="searchString" placeholder="Filtre por texto ou hashtag" style="width: 100%; margin-left: 2em;"/>
-        <ul >
+        <ul id="#list">
 
             <li ng-repeat="i in items| searchFor:searchString">
-                <a href="{{i.url}}"> <img class = "{{i.tipo}}" src ="{{i.fotoUrl}}" title="{{i.nomeUsuario}}"/></a>
-                <span class = "horario" >{{i.horario}}</span>
-                <span class = "descricao" >{{i.descricao}} </span>
+
+                <div id="conteudo">
+                    <a href="{{i.url}}"> <img class = "{{i.tipo}}" src ="{{i.fotoUrl}}" title="{{i.nomeUsuario}}"/></a>
+                    <span class = "horario" >{{i.horario}}</span>
+                    <span class = "descricao" >{{i.descricao}}</span>
+                </div>
             </li>
             <!-- < li >  </li >-->
         </ul>

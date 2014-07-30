@@ -12,6 +12,7 @@
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
         <script src="js/jquery.geocomplete.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <title>Escolha um lugar</title>
     </head>
     <body>
