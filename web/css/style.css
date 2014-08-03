@@ -161,7 +161,19 @@ button{
 }
 
 ul {
-    list-style: none
-;
+    list-style: none;
+}
+
+li{
+    clear:both;
+}
+
+#endereco{
+   width: 20%;
+   float: none;
+}
+
+#pesquisar{
+    float: none;
 }
 

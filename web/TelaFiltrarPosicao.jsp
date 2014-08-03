@@ -17,24 +17,26 @@
     </head>
     <body>
 
-
-
         <form action="resultados" method="get">
             <ul style="list-style: none">
                 <li>
                     <label>O que estão falando em </label>
+                    <input type="radio" name="location" id="endereco_radio"/>
+                    <input type="text" placeholder="Endereço (Ex.: Maracanã)" id="endereco"/>
+
+
                     <input type="radio" name="location" class="mylocation_fields" id="mylocation_radio" >Minha posição</input>
-                    <input type="radio" name="location" id="endereco_radio"><input type="text" placeholder="Endereço (Ex.: Maracanã)" id="endereco"></input></input>
                     <input hidden="hidden" id="lat" name="lat" style="width:90px; font-style:italic; " placeholder="lat"/>
                     <input hidden="hidden" id="lon" name="lon" style="width:90px; font-style:italic; " placeholder="lon" />
                 </li>
                 <li>
                     <label>Num raio de </label>
                     <input id="raio" name="raio" style="width:90px; font-style:italic; " placeholder="2 km">
+                    <input type="submit" value="Pesquisar" id="pesquisar">
 
                 </li>
                 <li>
-                    <input type="submit" value="Pesquisar"></input>
+
                 </li>
             </ul>
         </form>
