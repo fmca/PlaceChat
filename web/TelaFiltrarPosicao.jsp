@@ -17,7 +17,7 @@
     </head>
     <body>
 
-        <form action="resultados" method="get">
+        <form action="resultados" method="get" id="marca">
             <ul style="list-style: none">
                 <li>
                     <label>O que estão falando em </label>

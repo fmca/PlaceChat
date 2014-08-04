@@ -27,8 +27,9 @@
             <span class="erro"> ${erro} </span></br>
             <input type="submit" value="Entrar" class="button"/>
 
-            <p><a href="/cadastro"><button type="submit">Cadastrar-se</button> </a></p>
-          </form> 
+
+          </form>
+                <p><a href="/cadastro"><button type="submit">Cadastrar-se</button> </a></p>
     		</div>
     	</div>
        

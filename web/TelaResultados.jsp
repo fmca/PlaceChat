@@ -19,25 +19,37 @@
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
         <script src="js/jquery.geocomplete.min.js"></script>
+        <script src="js/alertify.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/alertify.core.css">
+        <link rel="stylesheet" type="text/css" href="css/alertify.bootstrap.css">
         <title>Resultados</title>
     </head>
     <body>
         <div class="menu shad">
 
-            <form action="resultados" method="get">
+            <form action="favoritos" method="get" id="favoritos">
+                <input type="submit" value="Favoritos">
+            </form>
+            <form action="resultados" method="get" id="resultados">
+                <div>
                 <input id="lat" name="lat" style="width:90px; font-style:italic; " placeholder="lat" >
                 <input id="lon" name="lon" style="width:90px; font-style:italic; " placeholder="lon" >
-                <input id="raio" name="raio" style="width:90px; font-style:italic; " placeholder="raio km" >
-                <input type="submit" value="Pesquisar" />
+                <input id="raio" name="raio" style="width:90px; font-style:italic; " placeholder="2 (km)" >
+                ou
+                <input id="searchbox" placeholder="Nome do local" style="width: 180px"/>
+                    <input type="submit" value="Pesquisar" />
+                </div>
+
             </form>
+
 
         </div>
 
         <div id="mapa-pesquisa" style="width: 30%; height: 50em; float: right">
 
-            <input type="text" style="float: left;" id="searchbox" placeholder="Pesquisar" width="100%"/>
+
             <div id="map" style="width: 100%; height: 50em;"></div>
 
         </div>
@@ -124,7 +136,7 @@
 
                 $.post( "/favoritos", { nome: nomeS, url: urlS, fotourl: fotourlS, tipo: tipoS, descricao: descricaoS, horario: horarioS})
                         .done(function( data ) {
-                            alert("Favoritado!");
+                            alertify.success("Favoritado!");
                         });
 
             });
@@ -176,6 +188,10 @@
 
         margin: 0;
         margin-bottom: 1em;
+    }
+
+    #favoritos, #resultados{
+        display: inline;
     }
     .shad {
         border-bottom: 1px solid #999;

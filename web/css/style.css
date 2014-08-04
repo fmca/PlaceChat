@@ -44,6 +44,16 @@ margin-left: auto;
 
 }
 
+#filtrar{
+    width: 600px;
+    height: 400px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+    display: block;
+}
+
 #marcalogin {
 
 width: 150px;
@@ -121,15 +131,12 @@ input[type="submit"]{
 
 .fav{
 
-    float: right;
-    text-align: center;
     padding: 5px 5px 5px 5px;
     border-width: 0px;
     background-color: #E74C3C;
     color: white;
     border-radius: 5px;
     margin-right: 10px;
-    float: right;
     margin-top: 25px;
 
 }
